@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Орбита — планировщик задач для команд</title>
+  <meta name="description" content="Демо-дизайн в стиле glassmorphism: лендинг SaaS-продукта.">
+  <script>if (window.self !== window.top) document.documentElement.classList.add('dz-embed');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="back.css">
+  <style>
+    :root { --bg: #070816; --glass: rgba(255, 255, 255, 0.06); --line: rgba(255, 255, 255, 0.12); --text: #eef0ff; --muted: #a3a8c7; --a: #7c5cff; --b: #22d3ee; --c: #f472b6; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.6 Manrope, system-ui, sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .blobs { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+    .blobs i { position: absolute; width: 46vmax; aspect-ratio: 1; border-radius: 50%; filter: blur(90px); opacity: 0.55; animation: drift 18s ease-in-out infinite alternate; }
+    .blobs i:nth-child(1) { background: var(--a); top: -15%; left: -10%; }
+    .blobs i:nth-child(2) { background: var(--b); top: 30%; right: -20%; animation-delay: -6s; opacity: 0.35; }
+    .blobs i:nth-child(3) { background: var(--c); bottom: -25%; left: 20%; animation-delay: -12s; opacity: 0.3; }
+    @keyframes drift { to { transform: translate(8vw, 6vh) scale(1.15); } }
+
+    .glass { background: var(--glass); border: 1px solid var(--line); border-radius: 22px; backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 14px; font-weight: 700; transition: transform 0.15s, box-shadow 0.15s; }
+    .btn--primary { background: linear-gradient(135deg, var(--a), var(--b)); box-shadow: 0 10px 30px -8px rgba(124, 92, 255, 0.7); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -8px rgba(124, 92, 255, 0.9); }
+    .btn--ghost { border: 1px solid var(--line); background: var(--glass); }
+
+    header { position: sticky; top: 12px; z-index: 5; margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 10px 10px 10px 20px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+    .logo i { width: 26px; height: 26px; border-radius: 50%; border: 3px solid var(--b); box-shadow: inset 0 0 0 4px var(--bg), inset 0 0 0 20px var(--a); }
+    header nav { display: flex; gap: 26px; color: var(--muted); font-weight: 500; font-size: 15px; }
+    header nav a:hover { color: var(--text); }
+
+    .hero { text-align: center; padding: clamp(60px, 12vw, 130px) 0 60px; }
+    .pill { display: inline-flex; gap: 8px; align-items: center; padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted); }
+    .pill b { color: var(--b); }
+    .hero h1 { margin: 22px auto 0; max-width: 14ch; font-size: clamp(40px, 7.5vw, 84px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 800; }
+    .grad { background: linear-gradient(90deg, var(--a), var(--b), var(--c)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { max-width: 560px; margin: 22px auto 0; color: var(--muted); font-size: clamp(16px, 2vw, 19px); }
+    .hero .cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+
+    .app { margin: 40px auto 0; max-width: 960px; padding: 18px; display: grid; grid-template-columns: 180px 1fr; gap: 16px; text-align: left; }
+    .side { display: grid; gap: 6px; align-content: start; font-size: 14px; color: var(--muted); }
+    .side span { padding: 9px 12px; border-radius: 10px; }
+    .side .on { background: rgba(255, 255, 255, 0.08); color: var(--text); }
+    .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .col { display: grid; gap: 10px; align-content: start; padding: 12px; border-radius: 16px; background: rgba(255, 255, 255, 0.03); }
+    .col h4 { margin: 0 0 4px; font-size: 13px; color: var(--muted); font-weight: 600; }
+    .task { padding: 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.07); border: 1px solid var(--line); font-size: 14px; }
+    .task i { display: block; width: 40%; height: 5px; margin-top: 10px; border-radius: 3px; background: var(--a); }
+    .task:nth-child(3) i { background: var(--b); width: 70%; }
+    .task:nth-child(4) i { background: var(--c); width: 25%; }
+
+    .features { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); padding: 90px 0; }
+    .feature { padding: 28px; transition: transform 0.2s, border-color 0.2s; }
+    .feature:hover { transform: translateY(-4px); border-color: rgba(124, 92, 255, 0.6); }
+    .feature .ic { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; font-size: 22px; background: linear-gradient(135deg, rgba(124, 92, 255, 0.4), rgba(34, 211, 238, 0.3)); }
+    .feature h3 { margin: 18px 0 8px; font-size: 20px; }
+    .feature p { margin: 0; color: var(--muted); }
+
+    .pricing { text-align: center; padding: 40px 0 100px; }
+    .pricing h2 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -0.03em; margin: 0 0 40px; }
+    .plans { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); text-align: left; }
+    .plan { padding: 30px; display: grid; gap: 14px; align-content: start; }
+    .plan.best { border-color: rgba(124, 92, 255, 0.8); box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.5), 0 30px 60px -20px rgba(124, 92, 255, 0.5); }
+    .plan .price { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
+    .plan .price small { font-size: 16px; color: var(--muted); font-weight: 500; }
+    .plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; color: var(--muted); }
+    .plan li::before { content: '✓ '; color: var(--b); font-weight: 800; }
+
+    footer { padding: 30px 0 90px; color: var(--muted); font-size: 14px; text-align: center; }
+
+    @media (max-width: 760px) {
+      header nav { display: none; }
+      .app { grid-template-columns: 1fr; }
+      .side { display: none; }
+      .board { grid-template-columns: 1fr 1fr; }
+      .board .col:last-child { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <header class="glass">
+      <a class="logo" href="#"><i></i>Орбита</a>
+      <nav><a href="#features">Возможности</a><a href="#pricing">Тарифы</a><a href="#">Блог</a></nav>
+      <a class="btn btn--primary" href="#pricing">Попробовать</a>
+    </header>
+
+    <section class="hero">
+      <span class="pill glass"><b>Новое</b> ИИ-помощник для планирования</span>
+      <h1>Задачи команды <span class="grad">на одной орбите</span></h1>
+      <p>Канбан, календарь и отчёты в одном спокойном интерфейсе. Без хаоса в чатах и потерянных дедлайнов.</p>
+      <div class="cta">
+        <a class="btn btn--primary" href="#pricing">Начать бесплатно →</a>
+        <a class="btn btn--ghost" href="#features">Как это работает</a>
+      </div>
+
+      <div class="app glass" aria-hidden="true">
+        <div class="side"><span class="on">📋 Доска</span><span>📅 Календарь</span><span>📊 Отчёты</span><span>👥 Команда</span></div>
+        <div class="board">
+          <div class="col"><h4>Сделать · 3</h4><div class="task">Макет главной<i></i></div><div class="task">Тексты для лендинга<i></i></div><div class="task">Иконки<i></i></div></div>
+          <div class="col"><h4>В работе · 2</h4><div class="task">API авторизации<i></i></div><div class="task">Онбординг<i></i></div></div>
+          <div class="col"><h4>Готово · 4</h4><div class="task">Дизайн-система<i></i></div><div class="task">Аналитика<i></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <article class="feature glass"><div class="ic">⚡</div><h3>Мгновенная синхронизация</h3><p>Изменения видны всей команде в ту же секунду — на любом устройстве.</p></article>
+      <article class="feature glass"><div class="ic">🧠</div><h3>Умный планировщик</h3><p>ИИ раскладывает задачи по неделе с учётом нагрузки и дедлайнов.</p></article>
+      <article class="feature glass"><div class="ic">🔒</div><h3>Безопасность</h3><p>Шифрование данных, роли и права доступа для каждого проекта.</p></article>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <h2>Простые <span class="grad">тарифы</span></h2>
+      <div class="plans">
+        <div class="plan glass"><b>Старт</b><span class="price">0 ₽ <small>/ мес</small></span><ul><li>До 5 участников</li><li>3 проекта</li><li>Базовые отчёты</li></ul><a class="btn btn--ghost" href="#">Выбрать</a></div>
+        <div class="plan glass best"><b>Команда</b><span class="price">490 ₽ <small>/ чел. в мес</small></span><ul><li>Без ограничений</li><li>ИИ-планировщик</li><li>Интеграции</li></ul><a class="btn btn--primary" href="#">Выбрать</a></div>
+        <div class="plan glass"><b>Компания</b><span class="price">По запросу</span><ul><li>SSO и аудит</li><li>Выделенный сервер</li><li>Персональный менеджер</li></ul><a class="btn btn--ghost" href="#">Связаться</a></div>
+      </div>
+    </section>
+
+    <footer>© 2026 Орбита · демо-сайт</footer>
+  </div>
+  <a class="dz-back" href="../">← Все дизайны</a>
+</body>
+</html>
