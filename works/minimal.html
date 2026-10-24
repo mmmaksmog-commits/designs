@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ОСЬ — архитектурное бюро</title>
+  <meta name="description" content="Демо-дизайн в стиле минимализм: сайт архитектурного бюро.">
+  <script>if (window.self !== window.top) document.documentElement.classList.add('dz-embed');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="back.css">
+  <style>
+    :root { --ink: #111; --paper: #f4f3ef; --line: #d9d7d0; --muted: #77756e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/1.6 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+    header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
+    .logo { font-weight: 600; letter-spacing: 0.3em; }
+    nav { display: flex; gap: 36px; font-size: 14px; }
+    nav a { position: relative; }
+    nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -4px; height: 1px; background: var(--ink); transition: right 0.3s; }
+    nav a:hover::after { right: 0; }
+
+    .hero { display: grid; grid-template-columns: 1fr; gap: 40px; padding: clamp(40px, 10vw, 120px) 0 60px; border-bottom: 1px solid var(--line); }
+    .hero h1 { margin: 0; font-weight: 300; font-size: clamp(48px, 11vw, 168px); line-height: 0.92; letter-spacing: -0.05em; }
+    .hero h1 em { font-style: normal; color: var(--muted); }
+    .hero__meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; align-items: end; }
+    .hero__meta p { max-width: 380px; margin: 0; color: var(--muted); }
+    .arrow-link { display: inline-flex; gap: 12px; align-items: center; font-weight: 500; border-bottom: 1px solid var(--ink); padding-bottom: 6px; }
+
+    .visual { margin: 60px 0; height: clamp(260px, 50vw, 620px); display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+    .visual div { background: linear-gradient(180deg, #d9d5cb, #bdb7aa); position: relative; overflow: hidden; }
+    .visual div::before { content: ''; position: absolute; inset: 18% 22% 0 22%; background: linear-gradient(90deg, #a49e90 0 50%, #8f897b 50%); }
+    .visual div::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 18%; background: #e9e6df; }
+    .visual div:last-child { background: linear-gradient(180deg, #2b2b2a, #4a4945); }
+    .visual div:last-child::before { inset: 30% 30% 0 30%; background: #6c6a63; }
+    .visual div:last-child::after { background: #1b1b1a; }
+
+    .section-row { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 80px 0; border-bottom: 1px solid var(--line); }
+    .label { font-size: 13px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .lead { margin: 0; font-size: clamp(24px, 3.4vw, 44px); font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; }
+
+    .projects { list-style: none; margin: 0; padding: 0; }
+    .projects li { display: grid; grid-template-columns: 60px 1fr auto; gap: 20px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--line); transition: padding 0.3s; cursor: pointer; }
+    .projects li:hover { padding-left: 14px; }
+    .projects .n { color: var(--muted); font-size: 14px; }
+    .projects .t { font-size: clamp(22px, 3vw, 36px); font-weight: 400; letter-spacing: -0.02em; }
+    .projects .y { color: var(--muted); font-size: 14px; }
+
+    .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); margin: 80px 0; border: 1px solid var(--line); }
+    .stats div { background: var(--paper); padding: 32px 24px; }
+    .stats b { display: block; font-size: clamp(40px, 6vw, 72px); font-weight: 300; letter-spacing: -0.04em; }
+    .stats span { color: var(--muted); font-size: 14px; }
+
+    footer { padding: 80px 0 100px; display: grid; gap: 30px; }
+    footer h2 { margin: 0; font-size: clamp(40px, 8vw, 120px); font-weight: 300; letter-spacing: -0.05em; line-height: 1; }
+    footer .row { display: flex; flex-wrap: wrap; gap: 24px 60px; color: var(--muted); font-size: 14px; }
+
+    @media (min-width: 860px) {
+      .section-row { grid-template-columns: 1fr 2fr; }
+      .stats { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav a:not(:last-child) { display: none; }
+      .visual { grid-template-columns: 1fr; }
+      .visual div:last-child { display: none; }
+      .projects li { grid-template-columns: 36px 1fr; }
+      .projects .y { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#">ОСЬ</a>
+      <nav><a href="#work">Проекты</a><a href="#about">Бюро</a><a href="#contact">Контакты</a></nav>
+    </header>
+
+    <section class="hero">
+      <h1>Пространство<br><em>без лишнего</em></h1>
+      <div class="hero__meta">
+        <p>Архитектурное бюро. Проектируем частные дома, интерьеры и общественные пространства, где важна каждая линия.</p>
+        <a class="arrow-link" href="#work">Смотреть проекты →</a>
+      </div>
+    </section>
+
+    <div class="visual" aria-hidden="true"><div></div><div></div></div>
+
+    <section class="section-row" id="about">
+      <span class="label">Подход</span>
+      <p class="lead">Мы убираем всё, что не работает на человека. Свет, материал и пропорция — остальное шум.</p>
+    </section>
+
+    <section class="section-row" id="work">
+      <span class="label">Избранное</span>
+      <ul class="projects">
+        <li><span class="n">01</span><span class="t">Дом у сосен</span><span class="y">2025 · Частный дом</span></li>
+        <li><span class="n">02</span><span class="t">Галерея «Белый куб»</span><span class="y">2024 · Общественное</span></li>
+        <li><span class="n">03</span><span class="t">Квартира на набережной</span><span class="y">2024 · Интерьер</span></li>
+        <li><span class="n">04</span><span class="t">Павильон «Тишина»</span><span class="y">2023 · Ландшафт</span></li>
+      </ul>
+    </section>
+
+    <div class="stats">
+      <div><b>12</b><span>лет практики</span></div>
+      <div><b>84</b><span>реализованных объекта</span></div>
+      <div><b>9</b><span>архитектурных премий</span></div>
+      <div><b>3</b><span>страны</span></div>
+    </div>
+
+    <footer id="contact">
+      <span class="label">Начать проект</span>
+      <h2>hello@os.demo</h2>
+      <div class="row"><span>Москва, Хохловский пер., 7</span><span>+7 (900) 000-00-00</span><span>© ОСЬ, 2026</span></div>
+    </footer>
+  </div>
+  <a class="dz-back" href="../">← Все дизайны</a>
+</body>
+</html>

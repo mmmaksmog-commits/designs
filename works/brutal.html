@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ГРОМ — музыкальный фестиваль</title>
+  <meta name="description" content="Демо-дизайн в стиле необрутализм: сайт музыкального фестиваля.">
+  <script>if (window.self !== window.top) document.documentElement.classList.add('dz-embed');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Rubik:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="back.css">
+  <style>
+    :root { --y: #ffe500; --k: #0a0a0a; --p: #ff3d7f; --b: #3d5afe; --w: #fffdf5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--w); color: var(--k); font: 500 17px/1.5 Rubik, system-ui, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .mono { font-family: 'Rubik Mono One', Rubik, sans-serif; }
+    .box { border: 3px solid var(--k); box-shadow: 6px 6px 0 var(--k); }
+    .btn { display: inline-block; padding: 14px 24px; background: var(--p); border: 3px solid var(--k); box-shadow: 5px 5px 0 var(--k); font-weight: 900; text-transform: uppercase; transition: transform 0.1s, box-shadow 0.1s; }
+    .btn:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--k); }
+    .btn--y { background: var(--y); }
+
+    header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px clamp(16px, 4vw, 40px); border-bottom: 3px solid var(--k); background: var(--y); }
+    .logo { font-size: 26px; }
+    header nav { display: flex; gap: 22px; font-weight: 700; text-transform: uppercase; }
+
+    .hero { position: relative; padding: clamp(40px, 8vw, 90px) clamp(16px, 4vw, 40px); background: var(--y); border-bottom: 3px solid var(--k); overflow: hidden; }
+    .hero h1 { margin: 0; font-size: clamp(64px, 19vw, 260px); line-height: 0.85; letter-spacing: -0.04em; }
+    .hero h1 span { display: inline-block; background: var(--k); color: var(--y); padding: 0 0.08em; transform: rotate(-2deg); }
+    .hero__row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; margin-top: 36px; }
+    .hero__date { padding: 12px 18px; background: var(--w); font-size: clamp(18px, 2.4vw, 26px); font-weight: 900; }
+    .sticker { position: absolute; top: 24px; right: clamp(16px, 6vw, 80px); width: clamp(110px, 16vw, 170px); aspect-ratio: 1; display: grid; place-items: center; text-align: center; border-radius: 50%; background: var(--p); border: 3px solid var(--k); font-weight: 900; line-height: 1.1; text-transform: uppercase; animation: spin 14s linear infinite; font-size: clamp(13px, 1.6vw, 17px); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .marquee { overflow: hidden; background: var(--k); color: var(--y); border-bottom: 3px solid var(--k); padding: 14px 0; white-space: nowrap; }
+    .marquee div { display: inline-block; animation: run 22s linear infinite; font-size: 22px; }
+    @keyframes run { to { transform: translateX(-50%); } }
+
+    section { padding: clamp(50px, 8vw, 90px) clamp(16px, 4vw, 40px); border-bottom: 3px solid var(--k); }
+    h2 { margin: 0 0 32px; font-size: clamp(34px, 6vw, 72px); line-height: 1; }
+
+    .lineup { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+    .artist { padding: 20px; background: var(--w); transition: transform 0.15s; }
+    .artist:nth-child(3n+1) { background: var(--b); color: var(--w); }
+    .artist:nth-child(3n+2) { background: var(--p); }
+    .artist:hover { transform: rotate(-1.5deg) scale(1.02); }
+    .artist small { display: block; font-weight: 700; text-transform: uppercase; opacity: 0.8; }
+    .artist b { display: block; margin-top: 50px; font-size: 30px; line-height: 1; font-weight: 900; text-transform: uppercase; }
+
+    .tickets { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); background: var(--b); }
+    .tickets h2 { grid-column: 1 / -1; color: var(--w); -webkit-text-stroke: 2px var(--k); }
+    .ticket { padding: 26px; background: var(--w); display: grid; gap: 14px; align-content: start; }
+    .ticket.hot { background: var(--y); }
+    .ticket .price { font-size: 48px; font-weight: 900; line-height: 1; }
+    .ticket ul { margin: 0; padding-left: 20px; }
+
+    footer { padding: 40px clamp(16px, 4vw, 40px) 90px; background: var(--k); color: var(--w); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+    footer .mono { font-size: clamp(28px, 6vw, 60px); color: var(--y); }
+
+    @media (max-width: 640px) {
+      header nav { display: none; }
+      .sticker { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo mono" href="#">ГРОМ</a>
+    <nav><a href="#lineup">Лайнап</a><a href="#tickets">Билеты</a><a href="#info">Инфо</a></nav>
+    <a class="btn" href="#tickets">Билеты</a>
+  </header>
+
+  <section class="hero">
+    <div class="sticker">3 дня<br>40 артистов<br>1 поле</div>
+    <h1 class="mono">ГРОМ<br><span>ФЕСТ</span></h1>
+    <div class="hero__row">
+      <div class="hero__date box">18–20 ИЮЛЯ · ПОЛЕ У РЕКИ</div>
+      <a class="btn btn--y" href="#tickets">Взять билет →</a>
+    </div>
+  </section>
+
+  <div class="marquee mono" aria-hidden="true"><div>
+    ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★ ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★ ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★&nbsp;
+    ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★ ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★ ГРОМКО ★ ЧЕСТНО ★ ДО УТРА ★&nbsp;
+  </div></div>
+
+  <section id="lineup">
+    <h2 class="mono">Лайнап</h2>
+    <div class="lineup">
+      <div class="artist box"><small>Пт · главная сцена</small><b>Ржавые трамваи</b></div>
+      <div class="artist box"><small>Пт · лес</small><b>Сестра Зима</b></div>
+      <div class="artist box"><small>Сб · главная сцена</small><b>Бетон FM</b></div>
+      <div class="artist box"><small>Сб · пляж</small><b>Мятный шум</b></div>
+      <div class="artist box"><small>Вс · главная сцена</small><b>Космос 404</b></div>
+      <div class="artist box"><small>Вс · лес</small><b>Тихо!</b></div>
+    </div>
+  </section>
+
+  <section class="tickets" id="tickets">
+    <h2 class="mono">Билеты</h2>
+    <div class="ticket box"><b>1 ДЕНЬ</b><span class="price">2 900 ₽</span><ul><li>Любой день на выбор</li><li>Все сцены</li></ul><a class="btn btn--y" href="#">Купить</a></div>
+    <div class="ticket box hot"><b>🔥 ВСЕ 3 ДНЯ</b><span class="price">6 500 ₽</span><ul><li>Все дни и сцены</li><li>Кемпинг включён</li></ul><a class="btn" href="#">Купить</a></div>
+    <div class="ticket box"><b>VIP</b><span class="price">14 000 ₽</span><ul><li>Зона у сцены</li><li>Встреча с артистами</li></ul><a class="btn btn--y" href="#">Купить</a></div>
+  </section>
+
+  <footer id="info">
+    <span class="mono">ГРОМ 2026</span>
+    <span>Демо-сайт · все артисты вымышлены</span>
+  </footer>
+  <a class="dz-back" href="../">← Все дизайны</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* Плашка «назад в галерею» — общая для всех демо-сайтов. */
+.dz-back {
+  position: fixed;
+  left: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(17, 17, 20, 0.88);
+  color: #fff !important;
+  font: 600 14px/1 Inter, system-ui, -apple-system, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  text-decoration: none !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s;
+}
+.dz-back:hover { transform: translateY(-2px); }
+/* Внутри превью-iframe плашка не нужна */
+.dz-embed .dz-back { display: none; }

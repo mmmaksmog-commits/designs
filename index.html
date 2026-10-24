@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Галерея дизайнов</title>
+  <meta name="description" content="Шесть сайтов в разных стилях: минимализм, брутализм, glassmorphism, люкс, киберпанк и эко. Выберите стиль — сделаю похожий.">
+  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0e11" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script>try { const t = localStorage.getItem('designs_theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+</head>
+<body>
+  <header class="nav">
+    <a class="nav__back" href="/" aria-label="В портфолио">←<span> Портфолио</span></a>
+    <span class="nav__title">Галерея дизайнов</span>
+    <button class="icon-btn" id="themeBtn" aria-label="Сменить тему">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero__kicker">6 стилей · живые сайты · адаптивно</p>
+      <h1 class="hero__title">Сайты, которые<br><span class="hero__accent">я могу сделать</span></h1>
+      <p class="hero__lead">Каждая карточка — настоящий работающий сайт, а не картинка. Откройте любой, посмотрите на телефоне и на ПК, а если понравится стиль — напишите, сделаю похожий под ваш бизнес.</p>
+    </section>
+
+    <nav class="filters" id="filters" aria-label="Фильтр по сфере"></nav>
+
+    <section class="gallery" id="gallery" aria-live="polite"></section>
+
+    <section class="steps">
+      <h2 class="steps__title">Как заказать сайт</h2>
+      <ol class="steps__list">
+        <li><b>Выберите стиль</b><span>Любой из галереи или смесь нескольких.</span></li>
+        <li><b>Расскажите о задаче</b><span>Что за бизнес, какие разделы и тексты нужны.</span></li>
+        <li><b>Получите сайт</b><span>Адаптивный, быстрый, с публикацией в интернете.</span></li>
+      </ol>
+      <a class="btn btn--primary" id="ctaBottom" href="/#contact">Обсудить проект →</a>
+    </section>
+  </main>
+
+  <footer class="footer">Все бренды на демо-сайтах вымышлены · Сделано на HTML, CSS и JavaScript</footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

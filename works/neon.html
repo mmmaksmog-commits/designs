@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PIXEL ARENA — киберспортивный клуб</title>
+  <meta name="description" content="Демо-дизайн в стиле киберпанк: сайт компьютерного клуба.">
+  <script>if (window.self !== window.top) document.documentElement.classList.add('dz-embed');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="back.css">
+  <style>
+    :root { --bg: #07020f; --pink: #ff2bd6; --cyan: #00f0ff; --lime: #b6ff3b; --text: #efe8ff; --muted: #9b8fb8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.6 'Exo 2', system-ui, sans-serif; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .r { font-family: 'Russo One', 'Exo 2', sans-serif; font-weight: 400; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+    .neon-p { color: var(--pink); text-shadow: 0 0 8px var(--pink), 0 0 24px rgba(255, 43, 214, 0.6); }
+    .neon-c { color: var(--cyan); text-shadow: 0 0 8px var(--cyan), 0 0 24px rgba(0, 240, 255, 0.6); }
+    .btn { display: inline-block; padding: 14px 28px; border: 2px solid var(--cyan); color: var(--cyan); font-family: 'Russo One', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px); box-shadow: inset 0 0 18px rgba(0, 240, 255, 0.35); transition: background 0.2s, color 0.2s; }
+    .btn:hover { background: var(--cyan); color: var(--bg); }
+    .btn--p { border-color: var(--pink); color: var(--pink); box-shadow: inset 0 0 18px rgba(255, 43, 214, 0.35); }
+    .btn--p:hover { background: var(--pink); color: var(--bg); }
+
+    header .wrap { display: flex; justify-content: space-between; align-items: center; padding-top: 22px; padding-bottom: 22px; }
+    .logo { font-size: 22px; letter-spacing: 0.06em; }
+    header nav { display: flex; gap: 30px; text-transform: uppercase; font-weight: 600; font-size: 14px; letter-spacing: 0.1em; color: var(--muted); }
+    header nav a:hover { color: var(--cyan); }
+
+    .hero { position: relative; min-height: 88vh; display: grid; align-items: center; overflow: hidden; }
+    .grid-floor { position: absolute; left: -50%; right: -50%; bottom: -10%; height: 55%; background:
+        linear-gradient(transparent 0 calc(100% - 2px), rgba(255, 43, 214, 0.7) 0) 0 0 / 100% 48px,
+        linear-gradient(90deg, transparent 0 calc(100% - 2px), rgba(255, 43, 214, 0.7) 0) 0 0 / 60px 100%;
+      transform: perspective(380px) rotateX(62deg); transform-origin: top; animation: floor 2.2s linear infinite; mask-image: linear-gradient(transparent, #000 40%); -webkit-mask-image: linear-gradient(transparent, #000 40%); }
+    @keyframes floor { to { background-position: 0 48px, 0 0; } }
+    .sun { position: absolute; left: 50%; bottom: 38%; width: min(60vw, 440px); aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%;
+      background: linear-gradient(var(--lime), var(--pink) 70%); box-shadow: 0 0 80px rgba(255, 43, 214, 0.6);
+      mask-image: repeating-linear-gradient(#000 0 14px, transparent 14px 20px); -webkit-mask-image: repeating-linear-gradient(#000 0 14px, transparent 14px 20px); opacity: 0.85; }
+    .hero__content { position: relative; z-index: 1; text-align: center; padding: 40px 0 120px; }
+    .hero h1 { margin: 0; font-size: clamp(54px, 13vw, 170px); line-height: 0.9; }
+    .glitch { position: relative; display: inline-block; }
+    .glitch::before, .glitch::after { content: attr(data-t); position: absolute; inset: 0; }
+    .glitch::before { color: var(--cyan); text-shadow: none; clip-path: inset(0 0 65% 0); animation: g 2.6s infinite steps(2); }
+    .glitch::after { color: var(--lime); text-shadow: none; clip-path: inset(60% 0 0 0); animation: g 3.1s infinite reverse steps(2); }
+    @keyframes g { 0%, 85%, 100% { transform: none; opacity: 0; } 87% { transform: translate(-6px, 2px); opacity: 1; } 91% { transform: translate(6px, -2px); opacity: 1; } 95% { transform: translate(-3px, 0); opacity: 1; } }
+    .hero p { margin: 22px auto 30px; max-width: 520px; padding: 10px 16px; border-radius: 10px; background: rgba(7, 2, 15, 0.72); color: var(--text); font-size: 18px; backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+    .hero .cta { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+
+    section { padding: clamp(60px, 10vw, 110px) 0; }
+    h2 { margin: 0 0 40px; font-size: clamp(32px, 6vw, 60px); text-transform: uppercase; }
+    .zones { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+    .zone { position: relative; padding: 28px; border: 1px solid rgba(0, 240, 255, 0.35); background: linear-gradient(160deg, rgba(0, 240, 255, 0.08), transparent 60%); clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%); transition: border-color 0.2s, transform 0.2s; }
+    .zone:hover { border-color: var(--cyan); transform: translateY(-4px); }
+    .zone:nth-child(2) { border-color: rgba(255, 43, 214, 0.4); background: linear-gradient(160deg, rgba(255, 43, 214, 0.1), transparent 60%); }
+    .zone:nth-child(3) { border-color: rgba(182, 255, 59, 0.4); background: linear-gradient(160deg, rgba(182, 255, 59, 0.08), transparent 60%); }
+    .zone .tag { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .zone h3 { margin: 10px 0; font-family: 'Russo One', sans-serif; font-weight: 400; font-size: 26px; }
+    .zone ul { margin: 0 0 18px; padding-left: 18px; color: var(--muted); }
+    .zone .price { font-family: 'Russo One', sans-serif; font-size: 30px; }
+
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 50px 0; }
+    .stats b { display: block; font-family: 'Russo One', sans-serif; font-size: clamp(36px, 6vw, 60px); font-weight: 400; }
+    .stats span { color: var(--muted); text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px; }
+
+    .tournament { text-align: center; padding: 50px 24px; border: 2px solid var(--pink); box-shadow: 0 0 40px rgba(255, 43, 214, 0.35), inset 0 0 40px rgba(255, 43, 214, 0.15); }
+    .tournament h2 { margin-bottom: 14px; }
+    .tournament p { margin: 0 0 26px; color: var(--muted); }
+
+    footer { padding: 40px 0 100px; text-align: center; color: var(--muted); font-size: 14px; }
+    @media (max-width: 720px) { header nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <a class="logo r neon-c" href="#">PIXEL//ARENA</a>
+      <nav><a href="#zones">Зоны</a><a href="#tournament">Турниры</a><a href="#">Контакты</a></nav>
+      <a class="btn btn--p" href="#zones">Бронь</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="grid-floor" aria-hidden="true"></div>
+    <div class="wrap hero__content">
+      <h1 class="r"><span class="glitch neon-p" data-t="ИГРАЙ">ИГРАЙ</span><br><span class="neon-c">НОЧЬЮ</span></h1>
+      <p>40 топовых ПК, RTX 5080, 360 Гц мониторы и PS5-лаунж. Открыто 24/7.</p>
+      <div class="cta"><a class="btn" href="#zones">Выбрать зону</a><a class="btn btn--p" href="#tournament">Турниры</a></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="stats">
+      <div><b class="neon-c">40</b><span>игровых мест</span></div>
+      <div><b class="neon-p">360</b><span>Гц мониторы</span></div>
+      <div><b style="color: var(--lime)">24/7</b><span>без выходных</span></div>
+      <div><b class="neon-c">1 Гбит</b><span>интернет</span></div>
+    </div>
+  </div>
+
+  <section id="zones">
+    <div class="wrap">
+      <h2 class="r neon-c">Зоны</h2>
+      <div class="zones">
+        <article class="zone"><span class="tag">Стандарт</span><h3>Арена</h3><ul><li>RTX 5070, 240 Гц</li><li>Механическая клавиатура</li></ul><span class="price">150 ₽/ч</span></article>
+        <article class="zone"><span class="tag">Для команд</span><h3>Буткемп</h3><ul><li>Отдельная комната на 5 мест</li><li>RTX 5080, 360 Гц</li></ul><span class="price">290 ₽/ч</span></article>
+        <article class="zone"><span class="tag">Консоли</span><h3>PS5-лаунж</h3><ul><li>Диван и 65" OLED</li><li>До 4 игроков</li></ul><span class="price">390 ₽/ч</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="tournament">
+    <div class="wrap">
+      <div class="tournament">
+        <h2 class="r neon-p">Турнир 5×5</h2>
+        <p>Каждую субботу в 19:00 · призовой фонд 50 000 ₽</p>
+        <a class="btn btn--p" href="#">Зарегистрировать команду</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>PIXEL//ARENA © 2026 · демо-сайт</footer>
+  <a class="dz-back" href="../">← Все дизайны</a>
+</body>
+</html>
